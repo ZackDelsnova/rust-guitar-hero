@@ -1,0 +1,8 @@
+[package]
+name = "rust-guitar-hero"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ggez = "0.9"
+rodio = "0.17"
