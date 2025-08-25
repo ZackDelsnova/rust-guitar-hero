@@ -36,16 +36,10 @@ impl event::EventHandler<ggez::GameError> for GameState {
     fn update(&mut self, ctx: &mut Context) -> GameResult {
         let dt = ctx.time.delta().as_secs_f32();
 
-        // Example note falling (replace with NoteSpawner + active notes update)
-        self.note_y += 200.0 * dt; 
-        if self.note_y > 600.0 { // reset if off screen
-            self.note_y = 0.0;
-        }
-
-        // TODO: Update systems here
-        // self.audio_manager.update(dt);
-        // let song_time = self.audio_manager.current_time();
-        // self.note_spawner.update(dt, song_time);
+        // Update systems here
+        self.audio_manager.update(dt);
+        let song_time = self.audio_manager.current_time();
+        self.note_spawner.update(dt, song_time);
         // self.input_manager.update();
         // self.score_manager.update(&self.note_spawner, &self.input_manager);
 
@@ -68,8 +62,7 @@ impl event::EventHandler<ggez::GameError> for GameState {
         )?;
         canvas.draw(&mesh, Vec2::new(0.0, 0.0));
 
-        // TODO: Draw other systems
-        // self.note_spawner.draw(ctx)?;
+        self.note_spawner.draw(&mut canvas, ctx)?;
         // self.score_manager.draw(ctx)?;
 
         canvas.finish(ctx)?;
