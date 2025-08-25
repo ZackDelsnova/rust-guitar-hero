@@ -1,5 +1,5 @@
 use ggez::event;
-use ggez::graphics::{ self, Color, Drawable };
+use ggez::graphics::{ self, Color };
 use ggez::{ Context, GameResult };
 use ggez::glam::*;
 use rodio::{ Decoder, OutputStream, Sink };
